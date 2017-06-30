@@ -84,8 +84,9 @@ namespace SimpleMapper
                     return cmd.ExecuteReader(CommandBehavior.CloseConnection);
                 }
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+                if(!dbConn.IsNullOrSpace())
                 dbConn.Close();
                 throw;
             }

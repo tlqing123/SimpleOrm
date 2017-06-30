@@ -149,7 +149,7 @@ namespace SimpleMapper
                 num++;
             }
             iLGenerator.BeginCatchBlock(typeof(Exception));
-            iLGenerator.EmitCall(OpCodes.Call, typeof(SqlMapper).GetMethod("ThrowDataException"), null);
+            iLGenerator.EmitCall(OpCodes.Call, typeof(Check).GetMethod("ThrowDataException"), null);
             iLGenerator.EndExceptionBlock();
             //iLGenerator.Emit(OpCodes.Ldloc, localIndex);
             iLGenerator.Emit(OpCodes.Ldloc_1);
@@ -233,13 +233,11 @@ namespace SimpleMapper
             iLGenerator.Emit(OpCodes.Stloc_0);
 
             List<PropertyInfo> items=parametersType.GetProperties().ToList();
-        
+            iLGenerator.BeginExceptionBlock();
             var indexlocal = iLGenerator.DeclareLocal(typeof(object));
             var indexlocalDbParameter=iLGenerator.DeclareLocal(typeof(DbParameter));
             foreach (PropertyInfo item in items)
             {
-               iLGenerator.BeginExceptionBlock();
-
                iLGenerator.Emit(OpCodes.Ldarg_0);
                iLGenerator.Emit(OpCodes.Unbox_Any, parametersType);
                iLGenerator.Emit(OpCodes.Callvirt, item.GetGetMethod(true));
@@ -251,10 +249,6 @@ namespace SimpleMapper
                iLGenerator.Emit(OpCodes.Box,typeof(object));
                iLGenerator.Emit(OpCodes.Stloc,indexlocal);
 
-               iLGenerator.BeginCatchBlock(typeof(Exception));
-               iLGenerator.EmitCall(OpCodes.Call, typeof(SqlMapper).GetMethod("ThrowDataException"), null);
-               iLGenerator.EndExceptionBlock();
-
                iLGenerator.Emit(OpCodes.Ldarg_1);
                iLGenerator.Emit(OpCodes.Ldstr,item.Name);
                iLGenerator.Emit(OpCodes.Ldloc,indexlocal);
@@ -265,7 +259,9 @@ namespace SimpleMapper
                iLGenerator.Emit(OpCodes.Ldloc, indexlocalDbParameter);
                iLGenerator.Emit(OpCodes.Callvirt, typeof(List<DbParameter>).GetMethod("Add", new Type[] { typeof(DbParameter) }));
             }
-            
+            iLGenerator.BeginCatchBlock(typeof(Exception));
+            iLGenerator.EmitCall(OpCodes.Call, typeof(SqlMapper).GetMethod("ThrowDataException"), null);
+            iLGenerator.EndExceptionBlock();
             iLGenerator.Emit(OpCodes.Ldloc_0);
             iLGenerator.Emit(OpCodes.Ret);
             return (Func<object, BaseProvider, List<DbParameter>>)method.CreateDelegate(typeof(Func<object, BaseProvider, List<DbParameter>>));
@@ -341,7 +337,7 @@ namespace SimpleMapper
                 }
             }
             iLGenerator.BeginCatchBlock(typeof(Exception));
-            iLGenerator.EmitCall(OpCodes.Call, typeof(SqlMapper).GetMethod("ThrowDataException"), null);
+            iLGenerator.EmitCall(OpCodes.Call, typeof(Check).GetMethod("ThrowDataException"), null);
             iLGenerator.EndExceptionBlock();
             iLGenerator.Emit(OpCodes.Ldloc_0);
             iLGenerator.Emit(OpCodes.Callvirt, typeof(StringBuilder).GetMethod("ToString", new Type[] { }));
@@ -433,7 +429,7 @@ namespace SimpleMapper
                 }
             }
             iLGenerator.BeginCatchBlock(typeof(Exception));
-            iLGenerator.EmitCall(OpCodes.Call, typeof(SqlMapper).GetMethod("ThrowDataException"), null);
+            iLGenerator.EmitCall(OpCodes.Call, typeof(Check).GetMethod("ThrowDataException"), null);
             iLGenerator.EndExceptionBlock();
             iLGenerator.Emit(OpCodes.Ldloc_0);
             iLGenerator.Emit(OpCodes.Callvirt, typeof(StringBuilder).GetMethod("ToString", new Type[] { }));
@@ -460,23 +456,6 @@ namespace SimpleMapper
                 return "{0},";
             else
                 return "'{0}',";
-        }
-        #endregion
-
-        #region 异常处理
-        public static void ThrowDataException(Exception ex)
-        {
-            Exception exception;
-            try
-            {
-               
-                exception = new DataException("错误原因："+ex);
-            }
-            catch
-            {
-                exception = new DataException(ex.Message, ex);
-            }
-            throw exception;
         }
         #endregion
 

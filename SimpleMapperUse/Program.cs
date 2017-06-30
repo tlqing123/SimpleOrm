@@ -17,7 +17,7 @@ namespace SimpleMapperUse
         public static void Main(string[] args)
         {
             //string connectionString = "Data Source=" + AppDomain.CurrentDomain.BaseDirectory + "\\DataSource\\" + ConfigHelper.GetConnectionString("SQLiteConnection");
-            string connectionString =  ConfigHelper.GetConnectionString("SqlConnection");
+            string connectionString = ConfigHelper.GetConnectionString("SqlConnection");
        
             #region 框架测试
             ///此部分最好在全局中注册，或者在IOC注册中注册
@@ -87,31 +87,7 @@ namespace SimpleMapperUse
             //Console.WriteLine(userq.mobile);
             #endregion
             string sqlRecord = "select * from tb_User";
-            #region 反射性能测试
 
-            var watcher1 = new Stopwatch();
-            watcher1.Start();
-            for (int i = 0; i < 100; i++)
-            {
-                repository.QueryReflect<tb_User>(sqlRecord, null).FirstOrDefault();
-            }
-            watcher1.Stop();
-            var duration1 = watcher1.Elapsed.TotalMilliseconds;
-            Console.WriteLine(".net反射的效率：" + duration1);
-            #endregion
-            #region Dapper性能测试
-            var watcher0 = new Stopwatch();
-            watcher0.Start();
-
-            IDbConnection conn = new SqlConnection(connectionString);
-            for (int i = 0; i < 100; i++)
-            {
-                conn.Query<tb_User>(sqlRecord, null).ToList().FirstOrDefault();
-            }
-            watcher0.Stop();
-            var duration0 = watcher0.Elapsed.TotalMilliseconds;
-            Console.WriteLine("Dapper的效率：" + duration0);
-            #endregion
             #region SimpleOrm性能测试
             var watcher = new Stopwatch();
             watcher.Start();
@@ -125,8 +101,33 @@ namespace SimpleMapperUse
             Console.WriteLine("SimpleOrm的效率：" + duration);
             #endregion
 
-           
+            #region Dapper性能测试
+            var watcher0 = new Stopwatch();
+            watcher0.Start();
 
+            IDbConnection conn = new SqlConnection(connectionString);
+            for (int i = 0; i < 100; i++)
+            {
+                conn.Query<tb_User>(sqlRecord, null).ToList().FirstOrDefault();
+            }
+            watcher0.Stop();
+            var duration0 = watcher0.Elapsed.TotalMilliseconds;
+            Console.WriteLine("Dapper的效率：" + duration0);
+            #endregion
+        
+            #region 反射性能测试
+
+            var watcher1 = new Stopwatch();
+            watcher1.Start();
+            for (int i = 0; i < 100; i++)
+            {
+                repository.QueryReflect<tb_User>(sqlRecord, null).FirstOrDefault();
+            }
+            watcher1.Stop();
+            var duration1 = watcher1.Elapsed.TotalMilliseconds;
+            Console.WriteLine(".net反射的效率：" + duration1);
+            #endregion
+ 
             Console.Read();
         }
     }

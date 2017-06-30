@@ -23,11 +23,12 @@ namespace SimpleMapper
         #region 构造方法，实例化连接字符串
         private static void RegisterProviderFactory(string connectionString, BaseProvider provider)
         {
-            Check.ConnectionConfig(connectionString);
             provider.connectionString = connectionString;
             dbProviderFactoryDic.Add(connectionString, provider);
         }
         public static void RegisterProviderFactory(string connectionString,DateProvider provider=DateProvider.SqlServer) {
+            Check.ConnectionConfig(connectionString);
+            Check.ArgumentNullException(provider);
             switch (provider)
             {
                 case DateProvider.SqlServer:
@@ -51,8 +52,7 @@ namespace SimpleMapper
 
         #region 获取Provider
         public static BaseProvider GetProviderFatory(string connstr) {
-            if (!dbProviderFactoryDic.ContainsKey(connstr))
-                throw new NullReferenceException("未注册数据库提供者");
+            Check.ProviderIsNoRegister(connstr,c=> dbProviderFactoryDic.ContainsKey(c));
             return dbProviderFactoryDic[connstr];
         }
         #endregion

@@ -107,6 +107,7 @@
     <Compile Include="DbContext.cs" />
     <Compile Include="infrastructure\Check.cs" />
     <Compile Include="infrastructure\ErrorMessage.cs" />
+    <Compile Include="infrastructure\SimpleException.cs" />
     <Compile Include="Providers\BaseProvider.cs" />
     <Compile Include="Providers\MysqlProvider.cs" />
     <Compile Include="Providers\OracleProvider.cs" />

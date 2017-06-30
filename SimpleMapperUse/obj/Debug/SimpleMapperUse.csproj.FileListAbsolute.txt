@@ -48,3 +48,13 @@ D:\学习\SimpleOrm-master\SimpleMapperUse\bin\Debug\SimpleMapper.dll
 D:\学习\SimpleOrm-master\SimpleMapperUse\bin\Debug\System.Data.SQLite.dll
 D:\学习\SimpleOrm-master\SimpleMapperUse\bin\Debug\SimpleMapper.pdb
 D:\学习\SimpleOrm-master\SimpleMapperUse\obj\Debug\SimpleMapperUse.csprojResolveAssemblyReference.cache
+D:\学习\SimpleOrm-master - 副本\SimpleMapperUse\bin\Debug\SimpleMapperUse.exe.config
+D:\学习\SimpleOrm-master - 副本\SimpleMapperUse\obj\Debug\SimpleMapperUse.exe
+D:\学习\SimpleOrm-master - 副本\SimpleMapperUse\obj\Debug\SimpleMapperUse.pdb
+D:\学习\SimpleOrm-master - 副本\SimpleMapperUse\bin\Debug\SimpleMapperUse.exe
+D:\学习\SimpleOrm-master - 副本\SimpleMapperUse\bin\Debug\SimpleMapperUse.pdb
+D:\学习\SimpleOrm-master - 副本\SimpleMapperUse\bin\Debug\Dapper.dll
+D:\学习\SimpleOrm-master - 副本\SimpleMapperUse\bin\Debug\SimpleMapper.dll
+D:\学习\SimpleOrm-master - 副本\SimpleMapperUse\bin\Debug\System.Data.SQLite.dll
+D:\学习\SimpleOrm-master - 副本\SimpleMapperUse\bin\Debug\SimpleMapper.pdb
+D:\学习\SimpleOrm-master - 副本\SimpleMapperUse\obj\Debug\SimpleMapperUse.csprojResolveAssemblyReference.cache

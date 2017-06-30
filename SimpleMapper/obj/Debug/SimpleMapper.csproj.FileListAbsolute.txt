@@ -45,3 +45,15 @@ D:\学习\SimpleOrm-master\SimpleMapper\obj\Debug\SimpleMapper.pdb
 D:\学习\SimpleOrm-master\SimpleMapper\obj\Debug\Decl\SimpleMapper.dll
 D:\学习\SimpleOrm-master\SimpleMapper\obj\Debug\Decl\SimpleMapper.pdb
 D:\学习\SimpleOrm-master\SimpleMapper\obj\Debug\CodeContractAnalysisRun.log
+D:\学习\SimpleOrm-master - 副本\SimpleMapper\bin\Debug\SimpleMapper.dll
+D:\学习\SimpleOrm-master - 副本\SimpleMapper\bin\Debug\SimpleMapper.pdb
+D:\学习\SimpleOrm-master - 副本\SimpleMapper\bin\Debug\MySql.Data.dll
+D:\学习\SimpleOrm-master - 副本\SimpleMapper\bin\Debug\Oracle.ManagedDataAccess.dll
+D:\学习\SimpleOrm-master - 副本\SimpleMapper\bin\Debug\System.Data.SQLite.dll
+D:\学习\SimpleOrm-master - 副本\SimpleMapper\obj\Debug\SimpleMapper.rewritten
+D:\学习\SimpleOrm-master - 副本\SimpleMapper\obj\Debug\SimpleMapper.dll
+D:\学习\SimpleOrm-master - 副本\SimpleMapper\obj\Debug\SimpleMapper.pdb
+D:\学习\SimpleOrm-master - 副本\SimpleMapper\obj\Debug\Decl\SimpleMapper.dll
+D:\学习\SimpleOrm-master - 副本\SimpleMapper\obj\Debug\Decl\SimpleMapper.pdb
+D:\学习\SimpleOrm-master - 副本\SimpleMapper\obj\Debug\CodeContractAnalysisRun.log
+D:\学习\SimpleOrm-master\SimpleMapper\obj\Debug\SimpleMapper.csprojResolveAssemblyReference.cache

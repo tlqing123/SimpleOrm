@@ -16,6 +16,22 @@ namespace SimpleMapper
                                        "ConnectionConfig不能为null。");
             }
         }
+        internal static string DateProviderIsNull
+        {
+            get
+            {
+                return GetThrowMessage("DateProvider cant't be null",
+                    "DataProvider不能为null");
+            }
+        }
+        internal static string NoRegisterDataProvider
+        {
+            get
+            {
+                return GetThrowMessage("DateProvider is no register",
+                    "未注册数据库提供者");
+            }
+        }
         internal static string GetThrowMessage(string enMessage, string cnMessage, params string[] args)
         {
             List<string> formatArgs = new List<string>() { enMessage, cnMessage };
